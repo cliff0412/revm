@@ -30,7 +30,7 @@ path = "bin/bench_erc20_transfer.rs"
 bytecode.workspace = true
 context.workspace = true
 context-interface.workspace = true
-database.workspace = true
+database = { workspace = true, features = ["alloydb"] }
 database-interface.workspace = true
 handler.workspace = true
 inspector.workspace = true
@@ -38,14 +38,6 @@ interpreter.workspace = true
 precompile.workspace = true
 primitives.workspace = true
 state.workspace = true
-
-# async
-tokio.workspace=true
-futures = "0.3"
-futures-util = { version = "0.3.28", default-features = false, features = [
-    "sink",
-    "std",
-] }
 
 # ethereum
 alloy-provider.workspace=true
@@ -55,10 +47,23 @@ alloy-primitives.workspace=true
 alloy-rpc-types-eth.workspace=true
 alloy-sol-types = { workspace = true, features = ["std"] }
 
+# crypto
+sha3.workspace=true
+k256.workspace=true
+
+# async
+tokio.workspace=true
+futures = "0.3"
+futures-util = { version = "0.3.28", default-features = false, features = [
+    "sink",
+    "std",
+] }
+
 # misc
 eyre = "0.6.12"
 thiserror.workspace=true
 hashbrown = "0.13.2"
 anyhow.workspace=true
+rand.workspace=true
 
 [features]

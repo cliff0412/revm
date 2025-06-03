@@ -3984,6 +3984,8 @@ dependencies = [
  "futures",
  "futures-util",
  "hashbrown 0.13.2",
+ "k256",
+ "rand 0.8.5",
  "revm-bytecode",
  "revm-context",
  "revm-context-interface",
@@ -3995,6 +3997,7 @@ dependencies = [
  "revm-precompile",
  "revm-primitives",
  "revm-state",
+ "sha3",
  "thiserror 2.0.12",
  "tokio",
 ]

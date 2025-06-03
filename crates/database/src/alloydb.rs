@@ -61,6 +61,7 @@ impl<N: Network, P: Provider<N>> DatabaseAsyncRef for AlloyDB<N, P> {
     type Error = DBTransportError;
 
     async fn basic_async_ref(&self, address: Address) -> Result<Option<AccountInfo>, Self::Error> {
+        // println!("basic_async_ref, address: {:?}", address);
         let nonce = self
             .provider
             .get_transaction_count(address)
@@ -85,6 +86,7 @@ impl<N: Network, P: Provider<N>> DatabaseAsyncRef for AlloyDB<N, P> {
     }
 
     async fn block_hash_async_ref(&self, number: u64) -> Result<B256, Self::Error> {
+        // println!("block_hash_async_ref, number: {:?}", number);
         let block = self
             .provider
             // SAFETY: We know number <= u64::MAX, so we can safely convert it to u64
@@ -104,6 +106,7 @@ impl<N: Network, P: Provider<N>> DatabaseAsyncRef for AlloyDB<N, P> {
         address: Address,
         index: StorageKey,
     ) -> Result<StorageValue, Self::Error> {
+        // println!("get storage, address: {:?}, index: {:?}", address, index);
         Ok(self
             .provider
             .get_storage_at(address, index)
