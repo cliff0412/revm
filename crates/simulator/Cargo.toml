@@ -1,0 +1,58 @@
+[package]
+name = "revm-simulator"
+description = "Revm - Rust Ethereum Virtual Machine"
+version = "24.0.0"
+authors.workspace = true
+edition.workspace = true
+keywords.workspace = true
+license.workspace = true
+repository.workspace = true
+readme.workspace = true
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[lints.rust]
+unreachable_pub = "warn"
+unused_must_use = "deny"
+rust_2018_idioms = "deny"
+
+[lints.rustdoc]
+all = "warn"
+
+[dependencies]
+# revm
+bytecode.workspace = true
+context.workspace = true
+context-interface.workspace = true
+database.workspace = true
+database-interface.workspace = true
+handler.workspace = true
+inspector.workspace = true
+interpreter.workspace = true
+precompile.workspace = true
+primitives.workspace = true
+state.workspace = true
+
+# async
+tokio.workspace=true
+futures = "0.3"
+futures-util = { version = "0.3.28", default-features = false, features = [
+    "sink",
+    "std",
+] }
+
+# ethereum
+alloy-provider.workspace=true
+alloy-transport.workspace=true
+alloy-network.workspace=true
+alloy-primitives.workspace=true
+alloy-rpc-types-eth.workspace=true
+
+# misc
+eyre = "0.6.12"
+thiserror.workspace=true
+hashbrown = "0.13.2"
+
+[features]

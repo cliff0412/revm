@@ -20,6 +20,8 @@ members = [
     "crates/op-revm",
     "crates/inspector",
 
+    "crates/simulator",
+
     # utility
     "crates/statetest-types",
 
@@ -53,21 +55,24 @@ context = { path = "crates/context", package = "revm-context", version = "5.0.0"
 context-interface = { path = "crates/context/interface", package = "revm-context-interface", version = "5.0.0", default-features = false }
 handler = { path = "crates/handler", package = "revm-handler", version = "5.0.0", default-features = false }
 op-revm = { path = "crates/op-revm", package = "op-revm", version = "5.0.0", default-features = false }
+revm-simulator = { path = "crates/simulator", version = "24.0.0", default-features = false }
 
 # alloy 
 alloy-eip2930 = { version = "0.2.1", default-features = false }
 alloy-eip7702 = { version = "0.6.1", default-features = false }
-alloy-primitives = { version = "1.1.2", default-features = false, features = ["sha3-keccak"]}
+alloy-primitives = { version = "1.1.2", default-features = true}
 
 # alloy in examples, revme or feature flagged.
 alloy-rlp = { version = "0.3.12", default-features = false }
 alloy-sol-types = { version = "1.1.2", default-features = false }
 alloy-consensus = { version = "1.0.6", default-features = false }
 alloy-eips = { version = "1.0.0", default-features = false }
-alloy-provider = { version = "1.0.6", default-features = false }
+alloy-provider = { version = "1.0.6", features=["ws"] }
 alloy-signer = { version = "1.0.6", default-features = false }
 alloy-signer-local = { version = "1.0.6", default-features = false }
 alloy-transport = { version = "1.0.6", default-features = false }
+alloy-network = { version = "1.0.6", default-features = false }
+alloy-rpc-types-eth = "1.0.9"
 
 # precompiles
 ark-bls12-381 = { version = "0.5", default-features = false }
@@ -107,8 +112,10 @@ cfg-if = { version = "1.0", default-features = false }
 derive-where = { version = "1.2.7", default-features = false }
 once_cell = { version = "1.19", default-features = false }
 rand = "0.8"
-tokio = "1.44"
 either = { version = "1.15.0", default-features = false }
+
+# async
+tokio = { version = "1", features = ["full"] }
 
 # dev-dependencies
 anyhow = "1.0.89"
