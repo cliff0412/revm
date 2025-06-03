@@ -21,6 +21,10 @@ rust_2018_idioms = "deny"
 [lints.rustdoc]
 all = "warn"
 
+[[bin]]
+name = "bench_erc20_transfer"     
+path = "bin/bench_erc20_transfer.rs"
+
 [dependencies]
 # revm
 bytecode.workspace = true
@@ -49,10 +53,12 @@ alloy-transport.workspace=true
 alloy-network.workspace=true
 alloy-primitives.workspace=true
 alloy-rpc-types-eth.workspace=true
+alloy-sol-types = { workspace = true, features = ["std"] }
 
 # misc
 eyre = "0.6.12"
 thiserror.workspace=true
 hashbrown = "0.13.2"
+anyhow.workspace=true
 
 [features]

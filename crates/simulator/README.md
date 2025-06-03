@@ -1,0 +1,1 @@
+cargo run -p revm-simulator --bin bench_erc20_transfer --release

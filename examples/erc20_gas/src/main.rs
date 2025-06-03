@@ -34,7 +34,7 @@ pub const TREASURY: Address = address!("0000000000000000000000000000000000000001
 #[tokio::main]
 async fn main() -> Result<()> {
     // Initialize the Alloy provider and database
-    let rpc_url = "https://mainnet.infura.io/v3/c60b0bb42f8a4c6481ecd229eddaca27";
+    let rpc_url = "https://rpc.ankr.com/eth/fd1df65634ef7b46509966f82e10e29dedf263d73aebec4d7c1cf2529a23bcf6";
     let provider = ProviderBuilder::new().connect(rpc_url).await?.erased();
 
     let alloy_db = WrapDatabaseAsync::new(AlloyDB::new(provider, BlockId::latest())).unwrap();
@@ -128,7 +128,7 @@ fn transfer(from: Address, to: Address, amount: U256, cache_db: &mut AlloyCacheD
     let mut ctx = Context::mainnet()
         .with_db(cache_db)
         .modify_cfg_chained(|cfg| {
-            cfg.spec = SpecId::CANCUN;
+            cfg.spec = SpecId::PRAGUE;
         })
         .modify_tx_chained(|tx| {
             tx.caller = from;
